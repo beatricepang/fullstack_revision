@@ -24,24 +24,6 @@ export default function QueryForm() {
   const toast = useToast();
   const { fetchData, loading, results, error, clearResults } = useCustomContextHook();
 
-  // useEffect(() => {
-  //   if (error) {
-  //     toast({
-  //       title: "Error fetching results",
-  //       status: "error",
-  //       duration: 3000,
-  //       isClosable: true,
-  //     });
-  //   } else if (results) {
-  //     toast({
-  //       title: "Results fetched successfully!",
-  //       status: "success",
-  //       duration: 3000,
-  //       isClosable: true,
-  //     });
-  //   }
-  // }, [error, results, toast]);
-
 
   const [formData, setFormData] = useState<PetFormData>({
     breed: "Labrador Retriever",
@@ -71,24 +53,6 @@ export default function QueryForm() {
 
     let hasErrors = false;
 
-    // // Validate breed
-    // if (!formData.breed) {
-    //   setErrors((prev) => ({
-    //     ...prev,
-    //     breed: "Please select a breed",
-    //   }));
-    //   hasErrors = true;
-    // }
-
-    // Validate age
-    // if (!formData.age || formData.age <= 0) {
-    //   setErrors((prev) => ({
-    //     ...prev,
-    //     age: "Please enter a valid age",
-    //   }));
-    //   hasErrors = true;
-    // }
-
     // Validate age
     if (formData.age < 0) {
       setErrors((prev) => ({
@@ -97,25 +61,6 @@ export default function QueryForm() {
       }));
       hasErrors = true;
     }
-
-    // if (formData.hasPreExistingConditions === null) {
-    //   setErrors((prev) => ({
-    //     ...prev,
-    //     hasPreExistingConditions: "Please indicate if there are any pre-existing conditions",
-    //   }));
-    //   hasErrors = true;
-    // }
-
-    // Validate coverage level
-    // if (!formData.coverageLevel) {
-    //   setErrors((prev) => ({
-    //     ...prev,
-    //     coverageLevel: "Please select a coverage level",
-    //   }));
-    //   hasErrors = true;
-    // }
-
-    // If there are validation errors, do not submit the form}
     if (hasErrors) {
       clearResults();
       toast({
